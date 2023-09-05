@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
+		"build": "contentlayer build && next build",
 		"start": "next start",
 		"lint": "next lint"
 	},
@@ -20,6 +20,7 @@
 		"@svgr/webpack": "^7.0.0",
 		"contentlayer": "^0.3.4",
 		"date-fns": "^2.30.0",
+		"esbuild": "0.18",
 		"framer-motion": "^10.16.3",
 		"fs": "0.0.1-security",
 		"next": "13.4.19",
