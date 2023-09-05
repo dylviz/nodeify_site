@@ -270,9 +270,10 @@ const HighlightsSection = () => {
 				avatar="/static/images/avatar.jpg"
 				gradient={["pink.200", "purple.500"]}
 			>
-				"I thrive on the challenges of optimizing systems, solving problems, and
-				pushing the boundaries for peak performance. This drive, coupled with my
-				deep interest in web3, motivated me to launch Nodeify."
+				&quot;I thrive on the challenges of optimizing systems, solving
+				problems, and pushing the boundaries for peak performance. This drive,
+				coupled with my deep interest in web3, motivated me to launch
+				Nodeify.&quot;
 			</HighlightsTestimonialItem>
 			<HighlightsItem
 				colSpan={[1, null, 2]}

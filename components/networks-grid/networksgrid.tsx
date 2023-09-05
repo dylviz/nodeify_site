@@ -70,9 +70,14 @@ export default function NetworksGrid({ imagePaths }: NetworksGridProps) {
 										alt={`Network ${rowIndex * 9 + index + 1}`}
 										width={"160px"}
 										p={4}
-										bg={useColorModeValue("gray.700", "unset")}
-										borderRadius={useColorModeValue("lg", "unset")}
-										boxShadow={useColorModeValue("xl", "unset")}
+										bg={"gray.700"}
+										borderRadius={"lg"}
+										boxShadow={"xl"}
+										_dark={{
+											bg: "unset",
+											boxShadow: "unset",
+											borderRaius: "unset",
+										}}
 									/>
 								</Flex>
 							</GridItem>
