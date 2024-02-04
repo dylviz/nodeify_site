@@ -23,23 +23,14 @@ const siteConfig = {
 				id: "faq",
 				label: "FAQ",
 			},
-			{
-				label: "Connect Wallet",
-				href: "/login",
-				variant: "primary",
-			},
+			// {
+			// 	label: "Connect Wallet",
+			// 	href: "/login",
+			// 	variant: "primary",
+			// },
 		],
 	},
 	footer: {
-		copyright: (
-			<>
-				{" "}
-				<Link href="https://twitter.com/brainfriedeth" isExternal>
-					BrainFried
-				</Link>{" "}
-				Production
-			</>
-		),
 		links: [
 			{
 				href: "mailto:admin@nodeify.net",
