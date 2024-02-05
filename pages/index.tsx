@@ -49,22 +49,16 @@ import { Features } from "components/features";
 import { BackgroundGradient } from "components/gradients/background-gradient";
 import { Faq } from "components/faq";
 import { Pricing } from "components/pricing/pricing";
-
 import { ButtonLink } from "components/button-link/button-link";
-import { Testimonial, Testimonials } from "components/testimonials";
-
 import faq from "data/faq";
-import SupportedNetworksData from "data/supportedNetworks";
 import pricing from "data/pricing";
-
-import {
-	Highlights,
-	HighlightsItem,
-	HighlightsTestimonialItem,
-} from "components/highlights";
+import SupportedNetworksData from "data/supportedNetworks";
 import NetworksGrid from "components/networks-grid/networksgrid";
 
 const Home: NextPage = () => {
+	const avatarUrls: string[] = SupportedNetworksData.items.map(
+		(item) => item.avatar
+	);
 	return (
 		<Box>
 			<SEO
@@ -78,7 +72,15 @@ const Home: NextPage = () => {
 
 				{/* <FeaturesSection /> */}
 
-				<SupportedNetworksSection />
+				{/* Staked Networks */}
+				<Box pb={"10"}>
+					<NetworksGrid imagePaths={avatarUrls} />
+				</Box>
+
+				{/* Managed Networks */}
+				<Box pb={"10"}>
+					<NetworksGrid imagePaths={avatarUrls} />
+				</Box>
 
 				{/* <PricingSection /> */}
 
@@ -97,10 +99,9 @@ const HeroSection: React.FC = () => {
 					<Hero
 						id="home"
 						justifyContent="flex-start"
-						px="0"
 						title={
 							<FallInPlace>
-								The most performant and reliable tech-stacks
+								The Most performant and reliable infrastructures
 							</FallInPlace>
 						}
 						description={
@@ -117,8 +118,8 @@ const HeroSection: React.FC = () => {
 							</HStack>
 
 							<ButtonGroup spacing={4} alignItems="center">
-								<ButtonLink colorScheme="primary" size="lg" href="/signup">
-									Subcribe to Newsletter
+								<ButtonLink colorScheme="gray" size="lg" href="/signup">
+									Learn more
 								</ButtonLink>
 								<ButtonLink
 									size="lg"
@@ -146,7 +147,7 @@ const HeroSection: React.FC = () => {
 						height="600px"
 						position="absolute"
 						display={{ base: "none", lg: "block" }}
-						left={{ lg: "60%", xl: "55%" }}
+						left={{ lg: "55%", xl: "50%" }}
 						width="80vw"
 						maxW="1100px"
 						margin="0 auto"
@@ -310,18 +311,6 @@ const FeaturesSection = () => {
 				},
 			]}
 		/>
-	);
-};
-
-const SupportedNetworksSection = () => {
-	const avatarUrls: string[] = SupportedNetworksData.items.map(
-		(item) => item.avatar
-	);
-
-	return (
-		<Box id="networks" pb={"10"}>
-			<NetworksGrid imagePaths={avatarUrls} />
-		</Box>
 	);
 };
 

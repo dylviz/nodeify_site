@@ -45,6 +45,7 @@ const siteConfig = {
 				label: <FaGithub size="14" />,
 			},
 		],
+		copyright: "Nodeify 2024",
 	},
 	signup: {
 		title: "A world of possibilities awaits",
