@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { Link } from "@saas-ui/react";
 import { NextSeoProps } from "next-seo";
-import { FaEnvelope, FaGithub, FaTwitter } from "react-icons/fa";
+import { FaDiscord, FaEnvelope, FaGithub, FaTwitter } from "react-icons/fa";
 import { FiCheck } from "react-icons/fi";
 import { Logo } from "./logo";
 
@@ -32,17 +32,21 @@ const siteConfig = {
 	},
 	footer: {
 		links: [
-			{
-				href: "mailto:admin@nodeify.net",
-				label: <FaEnvelope size={14} />,
-			},
+			// {
+			// 	href: "mailto:admin@nodeify.net",
+			// 	label: <FaEnvelope size={24} />,
+			// },
 			{
 				href: "https://twitter.com/nodeify_eth",
-				label: <FaTwitter size="14" />,
+				label: <FaTwitter size={24} />,
 			},
 			{
 				href: "https://github.com/kw1knode",
-				label: <FaGithub size="14" />,
+				label: <FaGithub size={24} />,
+			},
+			{
+				href: "https://github.com/kw1knode",
+				label: <FaDiscord size={24} />,
 			},
 		],
 		copyright: "Nodeify 2024",

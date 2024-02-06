@@ -12,6 +12,7 @@ import { devNull } from "os";
 
 interface NetworksGridProps {
 	imagePaths: string[];
+	title: string;
 }
 
 function sliceArrayWithPattern<T>(arr: T[]): T[][] {
@@ -39,13 +40,13 @@ function sliceArrayWithPattern<T>(arr: T[]): T[][] {
 	return result;
 }
 
-export default function NetworksGrid({ imagePaths }: NetworksGridProps) {
+export default function NetworksGrid({ imagePaths, title }: NetworksGridProps) {
 	const rowPaths = sliceArrayWithPattern(imagePaths);
 
 	return (
 		<>
 			<Flex justifyContent={"center"} p={6}>
-				<Heading>Staked Networks</Heading>
+				<Heading>{title}</Heading>
 			</Flex>
 			<Box pl={"10%"}>
 				{rowPaths.map((rowData, rowIndex) => (

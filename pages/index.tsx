@@ -52,11 +52,14 @@ import { Pricing } from "components/pricing/pricing";
 import { ButtonLink } from "components/button-link/button-link";
 import faq from "data/faq";
 import pricing from "data/pricing";
-import SupportedNetworksData from "data/supportedNetworks";
+import { stakedNetworks, managedNetworks } from "data/supportedNetworks";
 import NetworksGrid from "components/networks-grid/networksgrid";
 
 const Home: NextPage = () => {
-	const avatarUrls: string[] = SupportedNetworksData.items.map(
+	const stakedNetworkImages: string[] = stakedNetworks.items.map(
+		(item) => item.avatar
+	);
+	const managedNetworkImages: string[] = managedNetworks.items.map(
 		(item) => item.avatar
 	);
 	return (
@@ -73,13 +76,19 @@ const Home: NextPage = () => {
 				{/* <FeaturesSection /> */}
 
 				{/* Staked Networks */}
-				<Box pb={"10"}>
-					<NetworksGrid imagePaths={avatarUrls} />
+				<Box pb={"10"} mb={"10"}>
+					<NetworksGrid
+						title="Staked Networks"
+						imagePaths={stakedNetworkImages}
+					/>
 				</Box>
 
 				{/* Managed Networks */}
 				<Box pb={"10"}>
-					<NetworksGrid imagePaths={avatarUrls} />
+					<NetworksGrid
+						title="Managed Networks"
+						imagePaths={managedNetworkImages}
+					/>
 				</Box>
 
 				{/* <PricingSection /> */}
