@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HStack } from "@chakra-ui/react";
+import { Button, HStack } from "@chakra-ui/react";
 
 import { useRouter } from "next/router";
 
@@ -14,6 +14,7 @@ import { MobileNavContent } from "components/mobile-nav";
 import { useDisclosure, useUpdateEffect } from "@chakra-ui/react";
 
 import ThemeToggle from "./theme-toggle";
+import { scrollToSection } from "utils/scrolling-helper";
 
 const Navigation: React.FC = () => {
   const mobileNav = useDisclosure();
@@ -35,20 +36,27 @@ const Navigation: React.FC = () => {
 
   return (
     <HStack spacing="2" flexShrink={0}>
-      {siteConfig.header.links.map(({ id, ...props }, i) => {
+      {siteConfig.header.links.map(({ id, label, ...props }, i) => {
         return (
-          <NavLink
-            display={["none", null, "block"]}
-            href={`/#${id}`}
+          // <NavLink
+          //   display={["none", null, "block"]}
+          //   href={`/#${id}`}
+          //   key={i}
+          //   isActive={
+          //     !!(
+          //       (id && activeId === id)
+          //       // || (href && !!router.asPath.match(new RegExp(href)))
+          //     )
+          //   }
+          //   {...props}
+          // />
+          <Button
             key={i}
-            isActive={
-              !!(
-                (id && activeId === id)
-                // || (href && !!router.asPath.match(new RegExp(href)))
-              )
-            }
-            {...props}
-          />
+            variant="nav-link"
+            onClick={() => scrollToSection(id)}
+          >
+            {label}
+          </Button>
         );
       })}
 

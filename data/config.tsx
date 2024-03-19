@@ -1,5 +1,3 @@
-import { Button } from "@chakra-ui/react";
-import { Link } from "@saas-ui/react";
 import { NextSeoProps } from "next-seo";
 import { FaDiscord, FaEnvelope, FaGithub, FaTwitter } from "react-icons/fa";
 import { FiCheck } from "react-icons/fi";
@@ -16,12 +14,12 @@ const siteConfig = {
   header: {
     links: [
       {
-        id: "networks",
+        id: "networksSection",
         label: "Networks",
       },
       {
-        id: "faq",
-        label: "FAQ",
+        id: "aboutSection",
+        label: "About",
       },
       // {
       // 	label: "Connect Wallet",

@@ -52,16 +52,21 @@ export default function ContactForm() {
   };
 
   return (
-    <Box color="gray.200" fontSize="lg" w={"full"} p={4}>
+    <Box color="gray.200" fontSize="lg" maxW={"3xl"} p={4} mx={"auto"}>
       <Heading as="h2" size="lg" p={2} color="gray.200">
         Contact Us!
       </Heading>
       <form onSubmit={sendEmail} ref={form}>
-        <Box shadow="md" rounded="md" p={8} mb={4} borderWidth={1}>
+        <Box
+          shadow="xl"
+          rounded="lg"
+          p={8}
+          mb={4}
+          borderWidth={4}
+          bgColor={"gray.700"}
+        >
           <FormControl id="name" mb={4} isRequired>
-            <FormLabel fontWeight="bold">
-              Name<span color="red.500">*</span>
-            </FormLabel>
+            <FormLabel fontWeight="bold">Name</FormLabel>
             <Input
               type="text"
               name="name"
@@ -69,9 +74,7 @@ export default function ContactForm() {
             />
           </FormControl>
           <FormControl id="email" mb={4} isRequired>
-            <FormLabel fontWeight="bold">
-              Email<span color="red.500">*</span>
-            </FormLabel>
+            <FormLabel fontWeight="bold">Email</FormLabel>
             <Input type="email" name="email" onChange={handleInputChange} />
           </FormControl>
           <FormControl id="message" mb={4}>

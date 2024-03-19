@@ -22,7 +22,12 @@ export interface FooterProps extends BoxProps {
 export const Footer: React.FC<FooterProps> = (props) => {
   const { columns = 2, ...rest } = props;
   return (
-    <Box bg="white" _dark={{ bg: "blackAlpha.700" }} {...rest}>
+    <Box
+      id={"footerSection"}
+      bg="white"
+      _dark={{ bg: "blackAlpha.700" }}
+      {...rest}
+    >
       <HStack justify="center" spacing="6" alignSelf={"center"} p={6} pt={8}>
         {siteConfig.footer?.links?.map(({ href, label }) => (
           <FooterLink key={href} href={href}>
@@ -42,9 +47,6 @@ export const Footer: React.FC<FooterProps> = (props) => {
               {siteConfig.seo.description}
             </Text>
           </Stack>
-
-          {/* Contact Form */}
-          <ContactForm />
         </Flex>
         <Flex justify={"center"}>{siteConfig.footer.copyright}</Flex>
       </Container>

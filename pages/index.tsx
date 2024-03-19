@@ -1,59 +1,36 @@
-import * as React from "react";
-import type { NextPage } from "next";
-import Image from "next/image";
 import {
-  Container,
   Box,
-  Stack,
-  HStack,
-  ButtonGroup,
   Button,
-  Icon,
+  ButtonGroup,
+  Container,
   Heading,
-  Text,
-  Wrap,
-  Tag,
-  useClipboard,
-  IconButton,
-  VStack,
-  Flex,
+  Icon,
+  Stack,
 } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
+import type { NextPage } from "next";
+import Image from "next/image";
+import * as React from "react";
 
-import { FallInPlace } from "components/motion/fall-in-place";
-import { Hero } from "components/hero";
-import { Link, Br } from "@saas-ui/react";
-import { Em } from "components/typography";
-import { EthLogo, PolygonLogo } from "components/logos";
-import {
-  FiArrowRight,
-  FiBox,
-  FiCheck,
-  FiCloud,
-  FiCode,
-  FiCopy,
-  FiDatabase,
-  FiFlag,
-  FiGrid,
-  FiLock,
-  FiSearch,
-  FiSliders,
-  FiSmile,
-  FiTerminal,
-  FiThumbsUp,
-  FiToggleLeft,
-  FiTrendingUp,
-  FiUserPlus,
-} from "react-icons/fi";
+import { Br } from "@saas-ui/react";
+import { ContactSection } from "components/contactSection";
+import { Faq } from "components/faq";
 import { Features } from "components/features";
 import { BackgroundGradient } from "components/gradients/background-gradient";
-import { Faq } from "components/faq";
-import { Pricing } from "components/pricing/pricing";
-import { ButtonLink } from "components/button-link/button-link";
-import faq from "data/faq";
-import pricing from "data/pricing";
-import { stakedNetworks, managedNetworks } from "data/supportedNetworks";
+import { Hero } from "components/hero";
+import { FallInPlace } from "components/motion/fall-in-place";
 import NetworksGrid from "components/networks-grid/networksgrid";
+import { Em } from "components/typography";
+import faq from "data/faq";
+import { managedNetworks, stakedNetworks } from "data/supportedNetworks";
+import {
+  FiArrowRight,
+  FiCloud,
+  FiDatabase,
+  FiLock,
+  FiTrendingUp,
+} from "react-icons/fi";
+import { scrollToSection } from "utils/scrolling-helper";
 
 const Home: NextPage = () => {
   const stakedNetworkImages: string[] = stakedNetworks.items.map(
@@ -76,9 +53,9 @@ const Home: NextPage = () => {
         {/* <FeaturesSection /> */}
 
         {/* Staked Networks */}
-        <Box pb={"10"} mb={"10"}>
+        <Box pb={"10"} mb={"10"} id="networksSection">
           <NetworksGrid
-            title="Staked Networks"
+            title="Indexed Chains"
             imagePaths={stakedNetworkImages}
           />
         </Box>
@@ -86,7 +63,7 @@ const Home: NextPage = () => {
         {/* Managed Networks */}
         <Box pb={"10"}>
           <NetworksGrid
-            title="Managed Networks"
+            title="Managed Chains"
             imagePaths={managedNetworkImages}
           />
         </Box>
@@ -94,6 +71,12 @@ const Home: NextPage = () => {
         {/* <PricingSection /> */}
 
         {/* <FaqSection /> */}
+        <Box id="aboutSection" maxW={"4xl"} mx={"auto"} py={8}>
+          <Heading>About</Heading>
+          <p>This is the about section</p>
+        </Box>
+
+        <ContactSection />
       </Box>
     </Box>
   );
@@ -122,17 +105,17 @@ const HeroSection: React.FC = () => {
             }
           >
             <FallInPlace delay={0.8}>
-              <HStack pt="4" pb="12" spacing="4">
+              {/* <HStack pt="4" pb="12" spacing="4">
                 <EthLogo width="30px" /> <PolygonLogo height="30px" />
-              </HStack>
+              </HStack> */}
 
-              <ButtonGroup spacing={4} alignItems="center">
+              <ButtonGroup spacing={4} alignItems="center" py={4}>
                 {/* <ButtonLink colorScheme="gray" size="lg" href="/signup">
                   Learn more
                 </ButtonLink> */}
-                <ButtonLink
+                <Button
+                  onClick={() => scrollToSection("footerSection")}
                   size="lg"
-                  href="#"
                   variant="outline"
                   rightIcon={
                     <Icon
@@ -148,7 +131,7 @@ const HeroSection: React.FC = () => {
                   }
                 >
                   Contact
-                </ButtonLink>
+                </Button>
               </ButtonGroup>
             </FallInPlace>
           </Hero>
@@ -162,9 +145,9 @@ const HeroSection: React.FC = () => {
             margin="0 auto"
           >
             <FallInPlace delay={1}>
-              <Box overflow="hidden" height="100%">
+              <Box overflow="hidden" height="100%" borderRadius={"2xl"}>
                 <Image
-                  src="/static/screenshots/list.png"
+                  src="/static/images/heroimg.webp"
                   width={1200}
                   height={762}
                   alt="Screenshot of a ListPage"
@@ -220,116 +203,6 @@ const HeroSection: React.FC = () => {
         reveal={FallInPlace}
       />
     </Box>
-  );
-};
-
-const FeaturesSection = () => {
-  return (
-    <Features
-      id="features"
-      title={
-        <Heading
-          lineHeight="short"
-          fontSize={["2xl", null, "4xl"]}
-          textAlign="left"
-          as="p"
-        >
-          Not your standard
-          <Br /> dashboard template.
-        </Heading>
-      }
-      description={
-        <>
-          Saas UI Pro includes everything you need to build modern frontends.
-          <Br />
-          Use it as a template for your next product or foundation for your
-          design system.
-        </>
-      }
-      align="left"
-      columns={[1, 2, 3]}
-      iconSize={4}
-      features={[
-        {
-          title: "Components.",
-          icon: FiBox,
-          description:
-            "All premium components are available on a private NPM registery, no more copy pasting and always up-to-date.",
-          variant: "inline",
-        },
-        {
-          title: "Starterkits.",
-          icon: FiLock,
-          description:
-            "Example apps in Next.JS, Electron. Including authentication, billing, example pages, everything you need to get started FAST.",
-          variant: "inline",
-        },
-        {
-          title: "Documentation.",
-          icon: FiSearch,
-          description:
-            "Extensively documented, including storybooks, best practices, use-cases and examples.",
-          variant: "inline",
-        },
-        {
-          title: "Onboarding.",
-          icon: FiUserPlus,
-          description:
-            "Add user onboarding flows, like tours, hints and inline documentation without breaking a sweat.",
-          variant: "inline",
-        },
-        {
-          title: "Feature flags.",
-          icon: FiFlag,
-          description:
-            "Implement feature toggles for your billing plans with easy to use hooks. Connect Flagsmith, or other remote config services once you're ready.",
-          variant: "inline",
-        },
-        {
-          title: "Upselling.",
-          icon: FiTrendingUp,
-          description:
-            "Components and hooks for upgrade flows designed to make upgrading inside your app frictionless.",
-          variant: "inline",
-        },
-        {
-          title: "Themes.",
-          icon: FiToggleLeft,
-          description:
-            "Includes multiple themes with darkmode support, always have the perfect starting point for your next project.",
-          variant: "inline",
-        },
-        {
-          title: "Generators.",
-          icon: FiTerminal,
-          description:
-            "Extend your design system while maintaininig code quality and consistency with built-in generators.",
-          variant: "inline",
-        },
-        {
-          title: "Monorepo.",
-          icon: FiCode,
-          description: (
-            <>
-              All code is available as packages in a high-performance{" "}
-              <Link href="https://turborepo.com">Turborepo</Link>, you have full
-              control to modify and adjust it to your workflow.
-            </>
-          ),
-          variant: "inline",
-        },
-      ]}
-    />
-  );
-};
-
-const PricingSection = () => {
-  return (
-    <Pricing {...pricing}>
-      <Text p="8" textAlign="center" color="muted">
-        VAT may be applicable depending on your location.
-      </Text>
-    </Pricing>
   );
 };
 
