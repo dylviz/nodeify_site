@@ -16,53 +16,53 @@ import { useDisclosure, useUpdateEffect } from "@chakra-ui/react";
 import ThemeToggle from "./theme-toggle";
 
 const Navigation: React.FC = () => {
-	const mobileNav = useDisclosure();
-	const router = useRouter();
-	const activeId = useScrollSpy(
-		siteConfig.header.links
-			.filter(({ id }) => id)
-			.map(({ id }) => `[id="${id}"]`),
-		{
-			threshold: 0.75,
-		}
-	);
+  const mobileNav = useDisclosure();
+  const router = useRouter();
+  const activeId = useScrollSpy(
+    siteConfig.header.links
+      .filter(({ id }) => id)
+      .map(({ id }) => `[id="${id}"]`),
+    {
+      threshold: 0.75,
+    }
+  );
 
-	const mobileNavBtnRef = React.useRef<HTMLButtonElement>();
+  const mobileNavBtnRef = React.useRef<HTMLButtonElement>();
 
-	useUpdateEffect(() => {
-		mobileNavBtnRef.current?.focus();
-	}, [mobileNav.isOpen]);
+  useUpdateEffect(() => {
+    mobileNavBtnRef.current?.focus();
+  }, [mobileNav.isOpen]);
 
-	return (
-		<HStack spacing="2" flexShrink={0}>
-			{siteConfig.header.links.map(({ id, ...props }, i) => {
-				return (
-					<NavLink
-						display={["none", null, "block"]}
-						href={`/#${id}`}
-						key={i}
-						isActive={
-							!!(
-								(id && activeId === id)
-								// || (href && !!router.asPath.match(new RegExp(href)))
-							)
-						}
-						{...props}
-					/>
-				);
-			})}
+  return (
+    <HStack spacing="2" flexShrink={0}>
+      {siteConfig.header.links.map(({ id, ...props }, i) => {
+        return (
+          <NavLink
+            display={["none", null, "block"]}
+            href={`/#${id}`}
+            key={i}
+            isActive={
+              !!(
+                (id && activeId === id)
+                // || (href && !!router.asPath.match(new RegExp(href)))
+              )
+            }
+            {...props}
+          />
+        );
+      })}
 
-			<ThemeToggle />
+      {/* <ThemeToggle /> */}
 
-			<MobileNavButton
-				ref={mobileNavBtnRef}
-				aria-label="Open Menu"
-				onClick={mobileNav.onOpen}
-			/>
+      <MobileNavButton
+        ref={mobileNavBtnRef}
+        aria-label="Open Menu"
+        onClick={mobileNav.onOpen}
+      />
 
-			<MobileNavContent isOpen={mobileNav.isOpen} onClose={mobileNav.onClose} />
-		</HStack>
-	);
+      <MobileNavContent isOpen={mobileNav.isOpen} onClose={mobileNav.onClose} />
+    </HStack>
+  );
 };
 
 export default Navigation;

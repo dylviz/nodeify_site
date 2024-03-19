@@ -17,6 +17,9 @@ dependencies:
   '@chakra-ui/theme-tools':
     specifier: ^2.1.0
     version: 2.1.0(@chakra-ui/styled-system@2.9.1)
+  '@emailjs/browser':
+    specifier: ^4.3.3
+    version: 4.3.3
   '@emotion/react':
     specifier: ^11.11.1
     version: 11.11.1(@types/react@18.2.0)(react@18.2.0)
@@ -2564,10 +2567,6 @@ packages:
     peerDependencies:
       '@effect-ts/otel-node': '*'
     peerDependenciesMeta:
-      '@effect-ts/core':
-        optional: true
-      '@effect-ts/otel':
-        optional: true
       '@effect-ts/otel-node':
         optional: true
     dependencies:
@@ -2648,6 +2647,11 @@ packages:
 
   /@effect-ts/system@0.57.5:
     resolution: {integrity: sha512-/crHGujo0xnuHIYNc1VgP0HGJGFSoSqq88JFXe6FmFyXPpWt8Xu39LyLg7rchsxfXFeEdA9CrIZvLV5eswXV5g==}
+    dev: false
+
+  /@emailjs/browser@4.3.3:
+    resolution: {integrity: sha512-ltpt2S/WVREIBXptxYAVYBvXb2O6yTUYiRUWF8OLikMxlmiGsIgKpgHppikNd4Df0uAav7jCsQKcOJ3TJFUx5g==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /@emotion/babel-plugin@11.11.0:
